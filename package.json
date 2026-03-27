@@ -1,0 +1,55 @@
+{
+  "name": "pi-reduce",
+  "version": "0.1.0",
+  "description": "Reduce Pi session context by rebuilding the current branch with only the message types you keep.",
+  "license": "MIT",
+  "type": "module",
+  "keywords": [
+    "pi-package",
+    "pi",
+    "pi-coding-agent",
+    "session",
+    "context",
+    "reduce"
+  ],
+  "homepage": "https://github.com/toorusr/pi-reduce#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toorusr/pi-reduce.git"
+  },
+  "bugs": {
+    "url": "https://github.com/toorusr/pi-reduce/issues"
+  },
+  "files": [
+    "extensions",
+    "README.md",
+    "LICENSE",
+    "package.json",
+    "tsconfig.json"
+  ],
+  "scripts": {
+    "check": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run check"
+  },
+  "peerDependencies": {
+    "@mariozechner/pi-agent-core": "^0.63.1",
+    "@mariozechner/pi-ai": "^0.63.1",
+    "@mariozechner/pi-coding-agent": "^0.63.1",
+    "@mariozechner/pi-tui": "^0.63.1"
+  },
+  "devDependencies": {
+    "@mariozechner/pi-agent-core": "^0.63.1",
+    "@mariozechner/pi-ai": "^0.63.1",
+    "@mariozechner/pi-coding-agent": "^0.63.1",
+    "@mariozechner/pi-tui": "^0.63.1",
+    "typescript": "^5.9.3"
+  },
+  "pi": {
+    "extensions": [
+      "./extensions/index.ts"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
