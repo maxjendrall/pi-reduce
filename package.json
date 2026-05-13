@@ -1,6 +1,6 @@
 {
   "name": "pi-reduce",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Reduce Pi session context by rebuilding the current branch with only the message types you keep.",
   "license": "MIT",
   "type": "module",
@@ -32,16 +32,16 @@
     "prepublishOnly": "npm run check"
   },
   "peerDependencies": {
-    "@mariozechner/pi-agent-core": "^0.63.1",
-    "@mariozechner/pi-ai": "^0.63.1",
-    "@mariozechner/pi-coding-agent": "^0.63.1",
-    "@mariozechner/pi-tui": "^0.63.1"
+    "@mariozechner/pi-agent-core": "*",
+    "@mariozechner/pi-ai": "*",
+    "@mariozechner/pi-coding-agent": "*",
+    "@mariozechner/pi-tui": "*"
   },
   "devDependencies": {
-    "@mariozechner/pi-agent-core": "^0.63.1",
-    "@mariozechner/pi-ai": "^0.63.1",
-    "@mariozechner/pi-coding-agent": "^0.63.1",
-    "@mariozechner/pi-tui": "^0.63.1",
+    "@mariozechner/pi-agent-core": "npm:@earendil-works/pi-agent-core@^0.74.0",
+    "@mariozechner/pi-ai": "npm:@earendil-works/pi-ai@^0.74.0",
+    "@mariozechner/pi-coding-agent": "npm:@earendil-works/pi-coding-agent@^0.74.0",
+    "@mariozechner/pi-tui": "npm:@earendil-works/pi-tui@^0.74.0",
     "typescript": "^5.9.3"
   },
   "pi": {

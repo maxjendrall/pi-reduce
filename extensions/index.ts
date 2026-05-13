@@ -1287,7 +1287,12 @@ async function createDistilledSession(
 	const sessionName = sessionNameForDistill(ctx, label);
 
 	await ctx.waitForIdle();
-	const result = await ctx.newSession({
+	type NewSessionOptionsWithSession = NonNullable<Parameters<ExtensionCommandContext["newSession"]>[0]> & {
+		withSession?: (newCtx: Pick<ExtensionCommandContext, "ui">) => Promise<void> | void;
+	};
+	// Keep this as an explicitly typed variable for compatibility with older pi type definitions.
+	// Newer pi runtimes consume withSession so post-replacement UI work does not use the stale ctx.
+	const newSessionOptions: NewSessionOptionsWithSession = {
 		parentSession: sourceSessionFile,
 		setup: async (sessionManager) => {
 			sessionManager.appendCustomEntry("reduce-source", {
@@ -1310,14 +1315,15 @@ async function createDistilledSession(
 
 			sessionManager.appendSessionInfo(sessionName);
 		},
-	});
+		withSession: async (newCtx) => {
+			newCtx.ui.notify(compactFinalSummary(sessionName, stats), "info");
+		},
+	};
+	const result = await ctx.newSession(newSessionOptions);
 
 	if (result.cancelled) {
 		ctx.ui.notify("Reduce cancelled", "info");
-		return;
 	}
-
-	ctx.ui.notify(compactFinalSummary(sessionName, stats), "info");
 }
 
 export default function distillExtension(pi: ExtensionAPI) {
@@ -1436,13 +1442,7 @@ export default function distillExtension(pi: ExtensionAPI) {
 	pi.on("session_start", async (_event, ctx) => {
 		state = restoreState(ctx as ExtensionCommandContext);
 	});
-	pi.on("session_switch", async (_event, ctx) => {
-		state = restoreState(ctx as ExtensionCommandContext);
-	});
 	pi.on("session_tree", async (_event, ctx) => {
-		state = restoreState(ctx as ExtensionCommandContext);
-	});
-	pi.on("session_fork", async (_event, ctx) => {
 		state = restoreState(ctx as ExtensionCommandContext);
 	});
 }
