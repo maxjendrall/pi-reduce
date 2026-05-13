@@ -1,8 +1,8 @@
-import { buildSessionContext, calculateContextTokens, DynamicBorder, estimateTokens, getSettingsListTheme } from "@mariozechner/pi-coding-agent";
-import type { ExtensionAPI, ExtensionCommandContext } from "@mariozechner/pi-coding-agent";
-import type { AgentMessage } from "@mariozechner/pi-agent-core";
-import type { AssistantMessage, ImageContent, Message, TextContent, ToolCall, ToolResultMessage, Usage, UserMessage } from "@mariozechner/pi-ai";
-import { Container, SettingsList, Text, type SettingItem } from "@mariozechner/pi-tui";
+import { buildSessionContext, calculateContextTokens, DynamicBorder, estimateTokens, getSettingsListTheme } from "@earendil-works/pi-coding-agent";
+import type { ExtensionAPI, ExtensionCommandContext } from "@earendil-works/pi-coding-agent";
+import type { AgentMessage } from "@earendil-works/pi-agent-core";
+import type { AssistantMessage, ImageContent, Message, TextContent, ToolCall, ToolResultMessage, Usage, UserMessage } from "@earendil-works/pi-ai";
+import { Container, SettingsList, Text, type SettingItem } from "@earendil-works/pi-tui";
 
 type DistillPreset = "chat" | "reasoning" | "tools" | "no-tools";
 type ToolFilterMode = "all" | "include" | "exclude";
